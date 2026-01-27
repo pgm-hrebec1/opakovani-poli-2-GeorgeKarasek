@@ -7,6 +7,7 @@ const prompt = promptSync();
 // Napiste funkci, ktera obraci poradi prvku v poli. Smite vytvorit i nove pole. Funkce musi 
 // vratit jako hondotu pole, ve kterem jsou prvky v opacnem poradi, nez byly puvodne predane 
 // jako parametr.
+let test : number = 0;
 
 function obratPole(texty : string[]) : string[] {
     return []; // Nahradit skutecnym vysledkem
