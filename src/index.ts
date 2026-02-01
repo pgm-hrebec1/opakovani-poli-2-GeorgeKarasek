@@ -9,7 +9,21 @@ const prompt = promptSync();
 // jako parametr.
 let test : number = 0;
 
+
+
 function obratPole(texty : string[]) : string[] {
+    let index1 : number = 0
+    let index2 : number = 0
+    let promena1 : string = ""
+    let promena2 : string = ""          
+    for(index1 = 0; index1 < Math.floor((texty.length)/ 2);index1++ ) {
+        for(index2 = texty.length; index1 < Math.floor((texty.length)/ 2); index2--){
+            promena1 = texty[index1]
+            promena2 = texty[index2]
+            texty[index1] = promena2
+            texty[index2] = promena1
+            }
+        }
     return []; // Nahradit skutecnym vysledkem
 }
 
