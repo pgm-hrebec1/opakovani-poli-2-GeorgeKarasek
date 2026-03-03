@@ -11,20 +11,23 @@ let test : number = 0;
 
 
 
-function obratPole(texty : string[]) : string[] {
-    let index1 : number = 0
-    let index2 : number = 0
-    let promena1 : string = ""
-    let promena2 : string = ""          
-    for(index1 = 0; index1 < Math.floor((texty.length)/ 2);index1++ ) {
-        for(index2 = texty.length; index1 < Math.floor((texty.length)/ 2); index2--){
-            promena1 = texty[index1]
-            promena2 = texty[index2]
-            texty[index1] = promena2
-            texty[index2] = promena1
-            }
-        }
-    return []; // Nahradit skutecnym vysledkem
+function obratPole(texty: string[]): string[] {
+    let index1: number = 0
+    let index2: number = 0
+    let promena1: string = ""
+    let promena2: string = ""
+
+    for (index1 = 0; index1 < Math.floor(texty.length / 2); index1++) {
+        index2 = texty.length - 1 - index1
+
+        promena1 = texty[index1]
+        promena2 = texty[index2]
+
+        texty[index1] = promena2
+        texty[index2] = promena1
+    }
+
+    return texty;
 }
 
 function testObratPole() {
@@ -44,7 +47,20 @@ function testObratPole() {
 // v poli, ktere funkce dostane jako parametr.
 
 function obratPole2(texty : string[]) {
-    return []; // Nahradit skutecnym vysledkem
+    let index1 : number = 0
+    let index2 : number = 0
+    let promena1 : string = ""
+    let promena2 : string = ""          
+    for(index1 = 0; index1 < Math.floor((texty.length)/ 2);index1++ ) {
+        for(index2 = texty.length; index1 < Math.floor((texty.length)/ 2); index2--){
+            promena1 = texty[index1]
+            promena2 = texty[index2]
+            texty[index1] = promena2
+            texty[index2] = promena1
+            }
+        }
+    return [texty];
+     // Nahradit skutecnym vysledkem
 }
 
 function testObratPole2() {
