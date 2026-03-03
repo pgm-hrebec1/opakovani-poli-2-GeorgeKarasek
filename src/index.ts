@@ -29,7 +29,7 @@ function obratPole(texty: string[]): string[] {
 
     return texty;
 }
-
+//testObratPole()
 function testObratPole() {
     console.log(obratPole(["alfa", "beta", "gama", "delta"]));
     // vysledek: "delta", "gama", "beta", "alfa"
@@ -46,23 +46,26 @@ function testObratPole() {
 // Napiste funkci, ktera obraci poradi prvku v poli. POZOR - smite pouze prehazovat prvky
 // v poli, ktere funkce dostane jako parametr.
 
-function obratPole2(texty : string[]) {
-    let index1 : number = 0
-    let index2 : number = 0
-    let promena1 : string = ""
-    let promena2 : string = ""          
-    for(index1 = 0; index1 < Math.floor((texty.length)/ 2);index1++ ) {
-        for(index2 = texty.length; index1 < Math.floor((texty.length)/ 2); index2--){
-            promena1 = texty[index1]
-            promena2 = texty[index2]
-            texty[index1] = promena2
-            texty[index2] = promena1
-            }
-        }
-    return [texty];
+function obratPole2(texty : string[]) : string[]{
+    let index1: number = 0
+    let index2: number = 0
+    let promena1: string = ""
+    let promena2: string = ""
+
+    for (index1 = 0; index1 < Math.floor(texty.length / 2); index1++) {
+        index2 = texty.length - 1 - index1
+
+        promena1 = texty[index1]
+        promena2 = texty[index2]
+
+        texty[index1] = promena2
+        texty[index2] = promena1
+    }
+
+    return texty;
      // Nahradit skutecnym vysledkem
 }
-
+testObratPole2()
 function testObratPole2() {
 // Testovaci data pro overeni, ze se pole obraci spravne.
     let pole : string[] = ["alfa", "beta", "gama", "delta"];
@@ -70,6 +73,7 @@ function testObratPole2() {
     console.log(pole);
 
     pole = ["alfa", "beta", "epsilon", "gama", "delta"];
+    obratPole2(pole);
     console.log(pole);
 
     pole = ["jedinacek"];
