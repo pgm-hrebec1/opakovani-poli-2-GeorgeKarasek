@@ -9,38 +9,34 @@ const prompt = promptSync();
 // jako parametr.
 let test : number = 0;
 
+//PREDELAT S POP A PUSH!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//PREDELAT S POP A PUSH!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//PREDELAT S POP A PUSH!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//PREDELAT S POP A PUSH!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+function obratPole(pole: string[] = []): string[] {
+    let novePole: string[] = [];
 
-function obratPole(texty: string[]): string[] {
-    let index1: number = 0
-    let index2: number = 0
-    let promena1: string = ""
-    let promena2: string = ""
-
-    for (index1 = 0; index1 < Math.floor(texty.length / 2); index1++) {
-        index2 = texty.length - 1 - index1
-
-        promena1 = texty[index1]
-        promena2 = texty[index2]
-
-        texty[index1] = promena2
-        texty[index2] = promena1
+    while (pole.length > 0) {
+        let prvek = pole.pop();
+        if (prvek !== undefined) {
+            novePole.push(prvek);
+        }
     }
 
-    return texty;
+    return novePole;
 }
-//testObratPole()
-function testObratPole() {
-    console.log(obratPole(["alfa", "beta", "gama", "delta"]));
-    // vysledek: "delta", "gama", "beta", "alfa"
+obratPole();
 
-    console.log(obratPole(["alfa", "beta", "epsilon", "gama", "delta"]));
-    // vysledek: "delta", "gama", "epsilon", "beta", "alfa"
 
-    console.log(obratPole(["jedinacek"]));
-    // vysledek: "jedinacek"
+// test
+console.log(obratPole(["alfa", "beta", "gama", "delta"]));
+// výsledek: ["delta", "gama", "beta", "alfa"]
 
-}
+console.log(obratPole(["alfa", "beta", "epsilon", "gama", "delta"]));
+// výsledek: ["delta", "gama", "epsilon", "beta", "alfa"]
+
+console.log(obratPole(["jedinacek"]));
 
 // ULOHA O12:
 // Napiste funkci, ktera obraci poradi prvku v poli. POZOR - smite pouze prehazovat prvky
@@ -57,7 +53,7 @@ function obratPole2(texty : string[]) : string[]{
 
         promena1 = texty[index1]
         promena2 = texty[index2]
-
+//Ahoj budouci ja
         texty[index1] = promena2
         texty[index2] = promena1
     }
@@ -65,7 +61,7 @@ function obratPole2(texty : string[]) : string[]{
     return texty;
      // Nahradit skutecnym vysledkem
 }
-testObratPole2()
+//testObratPole2()
 function testObratPole2() {
 // Testovaci data pro overeni, ze se pole obraci spravne.
     let pole : string[] = ["alfa", "beta", "gama", "delta"];
