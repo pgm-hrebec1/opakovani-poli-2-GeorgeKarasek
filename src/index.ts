@@ -1,4 +1,5 @@
 import promptSync from 'prompt-sync';
+import { stringify } from 'querystring';
 
 const prompt = promptSync();
 
@@ -7,31 +8,61 @@ const prompt = promptSync();
 // Napiste funkci, ktera obraci poradi prvku v poli. Smite vytvorit i nove pole. Funkce musi 
 // vratit jako hondotu pole, ve kterem jsou prvky v opacnem poradi, nez byly puvodne predane 
 // jako parametr.
+let test : number = 0;
 
-function obratPole(texty : string[]) : string[] {
-    return []; // Nahradit skutecnym vysledkem
+//PREDELAT S POP A PUSH!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//PREDELAT S POP A PUSH!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//PREDELAT S POP A PUSH!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//PREDELAT S POP A PUSH!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+function obratPole(pole: string[] = []): string[] {
+    let novePole: string[] = [];
+
+    while (pole.length > 0) {
+        let prvek : string = pole.pop() as string;
+        if (prvek !== undefined){
+            novePole.push(prvek);
+        }
+    }
+
+    return novePole;
 }
+obratPole();
 
-function testObratPole() {
-    console.log(obratPole(["alfa", "beta", "gama", "delta"]));
-    // vysledek: "delta", "gama", "beta", "alfa"
 
-    console.log(obratPole(["alfa", "beta", "epsilon", "gama", "delta"]));
-    // vysledek: "delta", "gama", "epsilon", "beta", "alfa"
+// test
+console.log(obratPole(["alfa", "beta", "gama", "delta"]));
+// výsledek: ["delta", "gama", "beta", "alfa"]
 
-    console.log(obratPole(["jedinacek"]));
-    // vysledek: "jedinacek"
+console.log(obratPole(["alfa", "beta", "epsilon", "gama", "delta"]));
+// výsledek: ["delta", "gama", "epsilon", "beta", "alfa"]
 
-}
+console.log(obratPole(["jedinacek"]));
 
 // ULOHA O12:
 // Napiste funkci, ktera obraci poradi prvku v poli. POZOR - smite pouze prehazovat prvky
 // v poli, ktere funkce dostane jako parametr.
 
-function obratPole2(texty : string[]) {
-    return []; // Nahradit skutecnym vysledkem
-}
+function obratPole2(texty : string[]) : string[]{
+    let index1: number = 0;
+    let index2: number = 0;
+    let promena1: string = "";
+    let promena2: string = "";
 
+    for (index1 = 0; index1 < Math.floor(texty.length / 2); index1++) {
+        index2 = texty.length - 1 - index1;
+
+        promena1 = texty[index1];
+        promena2 = texty[index2];
+//Ahoj budouci ja
+        texty[index1] = promena2;
+        texty[index2] = promena1;
+    }
+
+    return texty;
+     // Nahradit skutecnym vysledkem
+}
+//testObratPole2()
 function testObratPole2() {
 // Testovaci data pro overeni, ze se pole obraci spravne.
     let pole : string[] = ["alfa", "beta", "gama", "delta"];
@@ -39,6 +70,7 @@ function testObratPole2() {
     console.log(pole);
 
     pole = ["alfa", "beta", "epsilon", "gama", "delta"];
+    obratPole2(pole);
     console.log(pole);
 
     pole = ["jedinacek"];
@@ -64,8 +96,40 @@ function testObratPole2() {
  * @returns odstranene texty; texty odstranene ze zacatku puvodniho "texty" museji byt na zacatku vysledku. 
  */
 function vezmiAPridej(texty : string[], zeZacatku : number, zKonce : number, pridejNaZacatek: string[], pridejNaKonec: string[]) : string[] {
-    return []; // NAHRADIT skutecnym vysledkem !
+
+
+    let odstranene: string[] = [];
+
+  
+    for (let i : number = 0; i < zeZacatku; i++) {
+        if (texty.length > 0) {
+            let odebrany = texty.splice(0, 1)[0];
+            odstranene.push(odebrany);
+        }
+    }
+
+    
+    for (let i : number = 0; i < zKonce; i++) {
+        if (texty.length > 0) {
+            let odebrany = texty.splice(texty.length - 1, 1)[0];
+            odstranene.push(odebrany);
+        }
+    }
+
+   
+    for (let i : number = pridejNaZacatek.length - 1; i >= 0; i--) {
+        texty.splice(0, 0, pridejNaZacatek[i]);
+    }
+
+   
+    for (let i : number = 0; i < pridejNaKonec.length; i++) {
+        texty.splice(texty.length, 0, pridejNaKonec[i]);
+    }
+
+    return odstranene;// NAHRADIT skutecnym vysledkem !
 }
+
+     
 
 function testVezmiApridej() {
     let pole : string[] = [ "pasla", "ovecky", "v", "zelenem", "hajecku"];
@@ -83,7 +147,7 @@ function testVezmiApridej() {
     console.log(odstraneno);
 }
 
-
+testVezmiApridej();
 // ULOHA O14:
 // Napiste funkci, ktera vyuziva funkci 'splice'. 
 // Najdete si k ni dokumentaci - pristupna pomoci naseptavace (Ctrl/Cmd + Space), nebo viz
